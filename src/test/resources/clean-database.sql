@@ -1,0 +1,1 @@
+delete from matricula where numero_matricula = 1;
