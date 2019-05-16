@@ -1,0 +1,1 @@
+delete from produto_susep_carencia where id_susep_carencia = 1;

@@ -1,0 +1,5 @@
+insert into produto_susep_carencia (id_susep_carencia, id_canal_distribuicao, nome_canal_distribuicao, id_canal_venda, nome_canal_venda, id_tipo_plano, nome_tipo_plano, id_produto, 
+nome_produto, id_tipo_produto, nome_tipo_produto, id_status_produto, nome_status_produto, id_processo_susep, numero_processo_susep_formatado, id_tipo_contratacao, 
+nome_tipo_contratacao, id_tipo_carencia, tipo_carencia, id_tipo_transacao, tipo_transacao, indicador_complemento, indicador_plano_concessao, indicador_bloqueio_venda, 
+nome_tempo_carencia, tempo_inicio, id_tipo_tempo_inicio, tipo_tempo_inicio, tempo_fim, id_tipo_tempo_fim, tipo_tempo_fim, qtd_maxima_resgate_ano, data_processamento) 
+values (1, 1, 'BANCO DO BRASIL ', 1, 'AG�NCIA', 3, 'PREVID�NCIA TRADICIONAL', 1, 'BRASILPREV TRADICIONAL EMPRESARIAL TR', 1, 'COLETIVO', 6, 'PRODUTO FORA DE COMERCIALIZA��O', 1, '001.003700/94', 3, 'EMPRESARIAL ANTERIOR A 2002', 1, 'INICIAL', 5, 'RESGATE', 'S', 'N', 'N', 'PRAZO', 0, 2, 'MES(ES)', 0, 2, 'MES(ES)', 0, current_date);
