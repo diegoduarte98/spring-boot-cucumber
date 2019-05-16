@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -25,7 +26,7 @@ public class MatriculaDBConfig {
 	@Primary
 	public LocalContainerEntityManagerFactoryBean matriculaEntityManager() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-		em.setDataSource(produtoDataSource());
+		em.setDataSource(matriculaDataSource());
 		em.setPackagesToScan(new String[] { "io.tpd.springbootcucumber" });
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -42,7 +43,7 @@ public class MatriculaDBConfig {
 
 	@Primary
 	@Bean(name = "matricula")
-	public DataSource produtoDataSource() {
+	public DataSource matriculaDataSource() {
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(env.getProperty("spring.matricula.datasource.driver-class-name"));
@@ -59,6 +60,12 @@ public class MatriculaDBConfig {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(matriculaEntityManager().getObject());
 		return transactionManager;
+	}
+	
+	@Primary
+	@Bean("jdbcTemplateMatricula")
+	public JdbcTemplate jdbcTemplateMatricula() {
+		return new JdbcTemplate(matriculaDataSource());
 	}
 
 }

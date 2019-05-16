@@ -1,4 +1,5 @@
-insert into matricula (numero_matricula, data_contratacao, numero_matricula_origem, id_produto, nome_produto, id_tipo_produto, nome_tipo_produto, valor_contribuicao_sobrevivencia, 
-valor_contribuicao_risco, status_descricao, id_canal_distribuicao, id_canal_venda) 
-values (11111111, current_date, '2886023', 127, 'Brasilprev Personalizado LP', null, null, 20000.0, 0.0, 'ATIVO', 1, 1);
+INSERT INTO beneficiario_cobertura_sobrevivencia
+(id_beneficiario, numero_matricula, nome_beneficiario, cpf, data_nascimento, sexo, genero, grau_parentesco, percentual_rateio)
+VALUES(1, 11111111, 'X', '88888888888', current_date, 'M', 'X', 'X', 1);
+
 

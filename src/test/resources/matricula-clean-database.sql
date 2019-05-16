@@ -1,1 +1,1 @@
-delete from matricula where numero_matricula = 11111111;
+delete from beneficiario_cobertura_sobrevivencia where numero_matricula = 11111111;

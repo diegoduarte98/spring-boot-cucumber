@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -23,7 +24,7 @@ public class ProdutoDBConfig {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean produtoEntityManager() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-		em.setDataSource(matriculaDataSource());
+		em.setDataSource(produtoDataSource());
 		em.setPackagesToScan(new String[] { "io.tpd.springbootcucumber" });
 
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -39,7 +40,7 @@ public class ProdutoDBConfig {
 	}
 
 	@Bean(name = "produto")
-	public DataSource matriculaDataSource() {
+	public DataSource produtoDataSource() {
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(env.getProperty("spring.produto.datasource.driver-class-name"));
@@ -56,6 +57,11 @@ public class ProdutoDBConfig {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(produtoEntityManager().getObject());
 		return transactionManager;
+	}
+	
+	@Bean("jdbcTemplateProduto")
+	public JdbcTemplate jdbcTemplateProduto() {
+		return new JdbcTemplate(produtoDataSource());
 	}
 
 }
